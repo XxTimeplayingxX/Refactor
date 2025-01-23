@@ -1,0 +1,10 @@
+.crear-paciente{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+i{
+    cursor: pointer;
+}
+.buttonCitaMedica{
+    width: 130px;
+}

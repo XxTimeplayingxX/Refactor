@@ -1,0 +1,9 @@
+<div class="opciones">
+    <h1>{{accion}} Receta</h1>
+    <div class="btn btn-primary" routerLink="/atencion">Volver</div>
+</div>
+
+<app-formulario-receta [paciente]="modelo.paciente" 
+[citaMedicaInput]="modelo"
+(citaMedicaOutput)="EnviarListaCitaMedica($event)"
+(accionOutput)="CambiarNombreAccion($event)"></app-formulario-receta>

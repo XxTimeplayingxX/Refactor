@@ -1,0 +1,13 @@
+form{
+    margin-top: 1rem;
+}
+.contenedor-botones{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.btn-cerrar{
+    margin-left: 1rem;
+}
+.error-mensaje{
+    color: red;
+}

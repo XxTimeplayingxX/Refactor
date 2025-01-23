@@ -1,0 +1,226 @@
+<div class="contenedor-formulario border border-secondary rounded">
+  <form action="" [formGroup]="form">
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-6 col-xl-6">
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingInput"
+            placeholder="name@example.com"
+            [formControl]="form.controls.medicamento"
+            [ngClass]="{'is-invalid': ObtenerErrorCampoMedicamento()}"
+          />
+          <label for="floatingInput">Medicamento</label>
+          <div id="validationServer03Feedback" class="invalid-feedback">
+            {{ObtenerErrorCampoMedicamento()}}
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-6 col-xl-6">
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingInput"
+            placeholder="name@example.com"
+            [formControl]="form.controls.dosis"
+            [ngClass]="{'is-invalid': ObtenerErrorCampoDosis()}"
+          />
+          <label for="floatingInput">Dosis</label>
+          <div id="validationServer03Feedback" class="invalid-feedback">
+            {{ObtenerErrorCampoDosis()}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <select
+          class="form form-select"
+          aria-label="Default select example"
+          [formControl]="form.controls.frecuencia"
+        >
+          <option value="24">Una vez al día</option>
+          <option value="12">Dos veces al día</option>
+          <option value="8">Tres veces al día</option>
+        </select>
+      </div>
+      @if(form.controls.frecuencia.value == '24'){
+      <div class="col">
+        <input
+          class="rounded"
+          type="time"
+          min="09:00"
+          max="18:00"
+          [formControl]="form.controls.horaElegida"
+        />
+      </div>
+      }
+    </div>
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-6 col-xl-6">
+        <div class="form-floating mb-3">
+          <input
+            type="date"
+            class="form-control"
+            id="floatingInput"
+            placeholder="name@example.com"
+            [formControl]="form.controls.fechaInicio"
+          />
+          <label for="floatingInput">Fecha de Inicio</label>
+        </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-6 col-xl-6">
+        <div class="form-floating mb-3">
+          <input
+            type="number"
+            class="form-control"
+            id="floatingInput"
+            placeholder="name@example.com"
+            [formControl]="form.controls.duracion"
+            [ngClass]="{'is-invalid': ObtenerErrorCampoDuracion()}"
+          />
+          <label for="floatingInput">Duración en días</label>
+          <div id="validationServer03Feedback" class="invalid-feedback">
+            {{ObtenerErrorCampoDuracion()}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingInput"
+            placeholder="name@example.com"
+            [formControl]="form.controls.instrucciones"
+            [ngClass]="{'is-invalid': ObtenerErrorCampoInstrucciones()}"
+          />
+          <label for="floatingInput">Ingrese las instrucciones</label>
+          <div id="validationServer03Feedback" class="invalid-feedback">
+            {{ObtenerErrorCampoInstrucciones()}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contenedor-botones">
+      <button
+        class="btn btn-primary"
+        [disabled]="ListDetalleReceta.length == 0"
+        (click)="VerCambios()"
+        data-bs-target="#exampleModalToggle2"
+            data-bs-toggle="modal"
+        type="button"
+      >
+        Ver cambios
+      </button>
+      <button
+        type="submit"
+        (click)="guardarCambios()"
+        class="btn btn-primary"
+        [disabled]="form.invalid"
+      >
+        Guardar cambios
+      </button>
+    </div>
+  </form>
+
+  <div
+    class="modal fade modal-dialog-scrollable"
+    id="exampleModalToggle2"
+    aria-hidden="true"
+    data-bs-backdrop="static"
+    aria-labelledby="exampleModalToggleLabel2"
+    tabindex="-1"
+  >
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">
+            Receta a tomar
+          </h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          @if (!(ListDetalleReceta != null && ListDetalleReceta.length > 0)) {
+          <div class="text-center">
+            <h3>No hay recetas registradas</h3>
+          </div>
+          } @else { @for (item of ListDetalleReceta; track $index) {
+          <div class="container">
+            <div class="row">
+              <div class="col-6">
+                <p><strong>Medicamento: </strong>{{ item.medicamento }}</p>
+              </div>
+              <div class="col-6">
+                <p><strong>Dosis: </strong> {{ item.dosis }}</p>
+              </div>
+              <div class="col-6">
+                <p>
+                  <strong>Frecuencia: </strong> Cada {{ item.frecuencia }} horas
+                </p>
+              </div>
+              @if(item.horaElegida != null){
+                <div class="col-6">
+                  <p>
+                    <strong>Hora elegida: </strong>{{ item.horaElegida }} 
+                  </p>
+                </div>
+              }
+              <div class="col-6">
+                <P><strong>Fecha de incio: </strong> {{ item.fechaInicio }}</P>
+              </div>
+              <div class="col-6">
+                <p><strong>Duración:</strong> {{ item.duracion }} días</p>
+              </div>
+              <div class="col-6">
+                <p><strong>Nombre:</strong> {{ item.nombre }}</p>
+              </div>
+              <div class="col-6">
+                <p><strong>Teléfono:</strong> {{ item.telefono }}</p>
+              </div>      
+              <div class="col-6">
+                <p><strong>Instrucciones:</strong>{{ item.instrucciones }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="container option-container gap-2">
+            <div
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+              (click)="EditarReceta(item, $index)"
+            >
+              Editar
+            </div>
+            <div class="btn btn-danger"
+            (click)="EliminarReceta($index)">Eliminar</div>
+          </div>
+          <hr />
+          } }
+        </div>
+        <div class="modal-footer">
+          <button
+            class="btn btn-primary"
+            data-bs-dismiss="modal"
+          >
+            Agregar receta
+          </button>
+          @if ((ListDetalleReceta != null && ListDetalleReceta.length > 0)) {
+          <button class="btn btn-success" data-bs-dismiss="modal" 
+          (click)="EnviarCabios(ListDetalleReceta)">
+            Enviar Cambios
+          </button>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

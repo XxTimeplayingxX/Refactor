@@ -1,0 +1,14 @@
+.container{
+    max-width: 800px;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(76, 169, 201);
+}
+.container label{
+    color: white;
+}
+.form-container{
+    padding: 10px;
+}

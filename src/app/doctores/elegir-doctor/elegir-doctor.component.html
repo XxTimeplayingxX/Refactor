@@ -1,0 +1,19 @@
+<div class="container content-container text-center mt-4">
+  
+  @for (doctor of doctores; track $index) {
+  <div class="borde-superior rounded"></div>
+  <div class="row doctor-content">
+    <div class="col">
+      <i class="fa-solid fa-user-doctor doctor-logo"></i>
+    </div>
+    <div class="col">
+      <h3>{{ doctor.nombre }} {{ doctor.apellido }}</h3>
+      <p>{{ doctor.especialidad }}</p>
+    </div>
+    <div class="col">
+      <button class="btn btn-primary"
+      (click)="elegirDoctor(doctor)">Elegir</button>
+    </div>
+  </div>
+  }
+</div>

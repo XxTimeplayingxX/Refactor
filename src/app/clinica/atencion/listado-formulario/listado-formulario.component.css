@@ -1,0 +1,18 @@
+.opciones{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+.content-value{
+    margin-bottom: 1rem;
+}
+.grupo-botones{
+    margin-bottom: 1rem;
+}
+.grupo-botones button{
+    margin-right: 1rem;
+}
+.form-container{
+    margin-top: 1rem;
+}

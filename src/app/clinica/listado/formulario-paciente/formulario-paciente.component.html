@@ -1,0 +1,97 @@
+<div class="container">
+    <form action="" [formGroup]="form">
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingCedula"
+          placeholder="Cédula"
+          maxlength="10"
+          [formControl]="form.controls.cedula"
+          [ngClass]="{'is-invalid': ObtenerErrorCampoCedula()}"
+        />
+        <label for="floatingCedula">Cédula</label>
+        <div id="validationServer03Feedback" class="invalid-feedback">
+          {{ObtenerErrorCampoCedula()}}
+        </div>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingNombre"
+          placeholder="Nombre"
+          [formControl]="form.controls.nombre"
+          [ngClass]="{'is-invalid': ObtenerErrorCampoNombre()}"
+        />
+        <label for="floatingNombre">Nombres</label>
+        <div id="validationServer03Feedback" class="invalid-feedback">
+          {{ObtenerErrorCampoNombre()}}
+        </div>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingApellido"
+          placeholder="Nombre"
+          [formControl]="form.controls.apellido"
+          [ngClass]="{'is-invalid': ObtenerErrorCampoApellido()}"
+        />
+        <label for="floatingApellido">Apellidos</label>
+        <div id="validationServer03Feedback" class="invalid-feedback">
+          {{ObtenerErrorCampoApellido()}}
+        </div>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingTelefono"
+          placeholder="Nombre"
+          maxlength="10"
+          [formControl]="form.controls.telefono"
+          [ngClass]="{'is-invalid': ObtenerErrorCampoTelefono()}"
+        />
+        <label for="floatingTelefono">Teléfono</label>
+        <div id="validationServer03Feedback" class="invalid-feedback">
+          {{ObtenerErrorCampoTelefono()}}
+        </div>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingCorreo"
+          placeholder="Nombre"
+          [formControl]="form.controls.correo"
+          [ngClass]="{'is-invalid': ObtenerErrorCampoCorreo()}"
+        />
+        <label for="floatingCorreo">Correo</label>
+        <div id="validationServer03Feedback" class="invalid-feedback">
+          {{ObtenerErrorCampoCorreo()}}
+        </div>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingHistorial"
+          placeholder="Nombre"
+          [formControl]="form.controls.historialMedico"
+          [ngClass]="{'is-invalid': ObtenerErrorCampoHistorialMedico()}"
+        />
+        <label for="floatingHistorial">Historial Médico</label>
+        <div id="validationServer03Feedback" class="invalid-feedback">
+          {{ObtenerErrorCampoHistorialMedico()}}
+        </div>
+      </div>
+    </form>
+    <div class="contenedor-botones">
+      <button class="btn btn-secondary btn-cerrar" routerLink="/" 
+      (click)="limpiarDataService()">Cerrar</button>
+      <button class="btn btn-primary"
+      [disabled]="form.invalid"
+      (click)="guardarCambios()">Guardar Cambios</button>
+  </div>
+  </div>

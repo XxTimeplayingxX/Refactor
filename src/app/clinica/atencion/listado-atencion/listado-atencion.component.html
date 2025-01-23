@@ -1,0 +1,51 @@
+<div class="opciones">
+    <h1>Listado de pacientes</h1>
+    <button class="btn btn-primary" routerLink="/">Volver</button>
+</div>
+
+@if (!citaMedica) {
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+}
+@else if (citaMedica.length == 0) {
+  <div class="mensaje">
+    <h3>No hay pacientes que atender....</h3>
+  </div>
+}
+@else {
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Cedula</th>
+          <th scope="col">Nombres Completos</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of citaMedica; track $index) {
+        <tr>
+          <td>{{ $index + 1 }}</td>
+          <td>{{item.paciente.cedula}}</td>
+          <td>{{item.paciente.nombre}} {{item.paciente.apellido}}</td>
+          <td>
+            <div class="container">
+              <button
+                type="button"
+                class="btn btn-primary"
+                (click)="atenderPaciente(item)"
+                routerLink="/receta"
+              >
+                Atender
+              </button>
+            </div>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}
+

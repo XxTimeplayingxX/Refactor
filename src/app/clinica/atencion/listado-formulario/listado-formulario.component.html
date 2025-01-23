@@ -1,0 +1,114 @@
+<div class="opciones">
+  <h1>Listado de Recetas</h1>
+  <button class="btn btn-primary" routerLink="/">Volver</button>
+</div>
+
+@if (!listDetalleReceta) {
+<div class="spinner-border" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+} @else if (listDetalleReceta.length == 0) {
+<div>
+  <h3>No hay elementos que mostrar</h3>
+</div>
+} @else {
+<div class="border rounded">
+  <form action="" [formGroup]="form">
+  @for (item of listDetalleReceta; track $index) {
+  <div class="container form-container">
+    <h2>Receta {{$index + 1}}</h2>
+    <div class="row">
+        <div class="col-xl-4 col-md-6 col-sm-12 content-value">
+          <div class="form-floating">
+            <input
+              type="text"
+              class="form-control"
+              id="floatingInputGrid"
+              placeholder="name@example.com"
+              [formControl]="form.controls.medicamento"
+              [value]="item.medicamento"
+            />
+            <label for="floatingInputGrid">Medicamento</label>
+          </div>
+        </div>
+
+        <div class="col-xl-4 col-md-6 col-sm-12 content-value">
+          <div class="form-floating">
+            <input
+              type="text"
+              class="form-control"
+              id="floatingInputGrid"
+              placeholder="name@example.com"
+              [formControl]="form.controls.dosis"
+            />
+            <label for="floatingInputGrid">Dosis</label>
+          </div>
+        </div>
+
+        <div class="col-xl-4 col-md-6 col-sm-12 content-value">
+          <select class="form form-select" aria-label="Default select example"
+        [formControl]="form.controls.frecuencia">
+          <option value="1">Una vez al día</option>
+          <option value="2">Dos veces al día</option>
+          <option value="3">Tres veces al día</option>
+        </select>
+        </div>
+
+        @if(form.controls.frecuencia.value == '1'){
+          <div class="col">
+            <input class="rounded" type="time" min="09:00" max="18:00"
+            [formControl]="form.controls.horaElegida">
+          </div>
+        }
+
+        <div class="col-xl-4 col-md-6 col-sm-12 content-value">
+          <div class="form-floating">
+            <input
+              type="date"
+              class="form-control"
+              id="floatingInputGrid"
+              placeholder="name@example.com"
+              [formControl]="form.controls.fechaInicio"
+            />
+            <label for="floatingInputGrid">Fecha de inicio</label>
+          </div>
+        </div>
+
+        <div class="col-xl-4 col-md-6 col-sm-12 content-value">
+          <div class="form-floating">
+            <input
+              type="text"
+              class="form-control"
+              id="floatingInputGrid"
+              placeholder="name@example.com"
+              [formControl]="form.controls.duracion"
+            />
+            <label for="floatingInputGrid">Duracion</label>
+          </div>
+        </div>
+
+        <div class="col-xl-4 col-md-6 col-sm-12 content-value">
+          <div class="form-floating">
+            <input
+              type="text"
+              class="form-control"
+              id="floatingInputGrid"
+              placeholder="name@example.com"
+              [formControl]="form.controls.instrucciones"
+            />
+            <label for="floatingInputGrid">Instrucciones</label>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="grupo-botones">
+        <button class="btn btn-primary">Editar</button>
+        <button class="btn btn-danger">Eliminar</button>
+      </div> -->
+    </div>
+  }
+  <div class="container mb-2">  
+    <button class="btn btn-primary" (click)="GuardarCambios()">Guardar cambios</button>
+  </div>
+</form>
+</div>
+}

@@ -1,0 +1,17 @@
+.contenedor-formulario{
+    padding: 10px;
+}
+.contenedor-botones{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+}
+.contenedor-botones .btn{
+    margin-right: 1rem;
+}
+.form-select{
+    margin-bottom: 1rem;
+}
+.container .option-container{
+    margin-right: 1rem;
+}

@@ -1,0 +1,12 @@
+.opciones{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+.mensaje{
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
