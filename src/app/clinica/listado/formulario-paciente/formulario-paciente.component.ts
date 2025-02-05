@@ -6,6 +6,7 @@ import { CompartirDatosService } from '../../../services/compartir-datos.service
 import { PacienteService } from '../../../services/paciente.service';
 import { LongitudCampo, primeraLetraMayuscula, soloTelefono } from '../../../shared/funciones/validaciones';
 import { NgClass } from '@angular/common';
+import { SeguridadService } from '../../../seguridad/seguridad.service';
 
 @Component({
   selector: 'app-formulario-paciente',

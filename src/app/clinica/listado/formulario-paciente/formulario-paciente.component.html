@@ -8,7 +8,7 @@
           placeholder="Cédula"
           maxlength="10"
           [formControl]="form.controls.cedula"
-          [ngClass]="{'is-invalid': ObtenerErrorCampoCedula()}"
+          [ngClass]="{'is-invalid': ObtenerErrorCampoCedula() && form.controls.cedula.touched}"
         />
         <label for="floatingCedula">Cédula</label>
         <div id="validationServer03Feedback" class="invalid-feedback">
@@ -22,7 +22,7 @@
           id="floatingNombre"
           placeholder="Nombre"
           [formControl]="form.controls.nombre"
-          [ngClass]="{'is-invalid': ObtenerErrorCampoNombre()}"
+          [ngClass]="{'is-invalid': ObtenerErrorCampoNombre() && form.controls.nombre.touched}"
         />
         <label for="floatingNombre">Nombres</label>
         <div id="validationServer03Feedback" class="invalid-feedback">
@@ -36,7 +36,7 @@
           id="floatingApellido"
           placeholder="Nombre"
           [formControl]="form.controls.apellido"
-          [ngClass]="{'is-invalid': ObtenerErrorCampoApellido()}"
+          [ngClass]="{'is-invalid': ObtenerErrorCampoApellido() && form.controls.apellido.touched}"
         />
         <label for="floatingApellido">Apellidos</label>
         <div id="validationServer03Feedback" class="invalid-feedback">
@@ -51,7 +51,7 @@
           placeholder="Nombre"
           maxlength="10"
           [formControl]="form.controls.telefono"
-          [ngClass]="{'is-invalid': ObtenerErrorCampoTelefono()}"
+          [ngClass]="{'is-invalid': ObtenerErrorCampoTelefono() && form.controls.telefono.touched}"
         />
         <label for="floatingTelefono">Teléfono</label>
         <div id="validationServer03Feedback" class="invalid-feedback">
@@ -65,7 +65,7 @@
           id="floatingCorreo"
           placeholder="Nombre"
           [formControl]="form.controls.correo"
-          [ngClass]="{'is-invalid': ObtenerErrorCampoCorreo()}"
+          [ngClass]="{'is-invalid': ObtenerErrorCampoCorreo() && form.controls.correo.touched}"
         />
         <label for="floatingCorreo">Correo</label>
         <div id="validationServer03Feedback" class="invalid-feedback">
@@ -79,7 +79,7 @@
           id="floatingHistorial"
           placeholder="Nombre"
           [formControl]="form.controls.historialMedico"
-          [ngClass]="{'is-invalid': ObtenerErrorCampoHistorialMedico()}"
+          [ngClass]="{'is-invalid': ObtenerErrorCampoHistorialMedico() && form.controls.historialMedico.touched}"
         />
         <label for="floatingHistorial">Historial Médico</label>
         <div id="validationServer03Feedback" class="invalid-feedback">

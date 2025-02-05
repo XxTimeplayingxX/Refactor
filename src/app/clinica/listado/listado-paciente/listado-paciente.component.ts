@@ -5,10 +5,12 @@ import { CompartirDatosService } from '../../../services/compartir-datos.service
 import { PacienteService } from '../../../services/paciente.service';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { AutorizadoComponent } from "../../../seguridad/autorizado/autorizado.component";
+import { SeguridadService } from '../../../seguridad/seguridad.service';
 
 @Component({
   selector: 'app-listado-paciente',
-  imports: [RouterLink],
+  imports: [RouterLink, AutorizadoComponent],
   templateUrl: './listado-paciente.component.html',
   styleUrl: './listado-paciente.component.css'
 })
@@ -18,6 +20,7 @@ export class ListadoPacienteComponent implements OnInit{
   }
   datasService = inject(CompartirDatosService);
   pacienteService = inject(PacienteService);
+  seguridadService = inject(SeguridadService);
   toastSvc = inject(ToastrService);
   router = inject(Router);
 

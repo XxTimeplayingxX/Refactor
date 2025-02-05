@@ -6,22 +6,18 @@ import { ListadoAtencionComponent } from './clinica/atencion/listado-atencion/li
 import { DoctoresPageComponent } from './doctores/doctores-page/doctores-page.component';
 import { RecetaComponent } from './clinica/atencion/receta/receta.component';
 import { ListadoFormularioComponent } from './clinica/atencion/listado-formulario/listado-formulario.component';
-import {unsavedChangesGuard} from './../app/guards/unsaved-changes.guard'
 import { LoginComponent } from './login/login/login.component';
+import { esAdminGuard } from './shared/guards/es-admin.guard';
 
 export const routes: Routes = [
-    {path: '',component: ListadoPacienteComponent},
+    {path: '',component: ListadoPacienteComponent, canActivate: [esAdminGuard]},
+    {path: 'editar-paciente', component: EditarPacienteComponent, canActivate: [esAdminGuard]},
+    {path: 'crear-paciente',component: CrearPacienteComponent, canActivate: [esAdminGuard]},
+    {path: 'atencion', component: ListadoAtencionComponent, canActivate: [esAdminGuard]},
+    {path: 'doctor', component: DoctoresPageComponent, canActivate: [esAdminGuard]},
+    {path: 'receta', component: RecetaComponent, canActivate: [esAdminGuard]},
+    {path: 'listado-receta', component: ListadoFormularioComponent, canActivate: [esAdminGuard]},
     {path: 'login', component:LoginComponent},
-    {path: 'editar-paciente', component: EditarPacienteComponent},
-    {path: 'crear-paciente', canDeactivate:[unsavedChangesGuard],component: CrearPacienteComponent},
-    {path: 'atencion', component: ListadoAtencionComponent},
-    {path: 'doctor', component: DoctoresPageComponent},
-    {path: 'receta',canDeactivate:[unsavedChangesGuard], component: RecetaComponent},
-    {path: 'listado-receta', component: ListadoFormularioComponent},
-
-
-
-
 
     {path: '**', redirectTo: ''}
 ];

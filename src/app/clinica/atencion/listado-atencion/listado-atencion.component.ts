@@ -23,7 +23,6 @@ export class ListadoAtencionComponent implements OnInit {
 
   getData() {
     this.citaMedicaService.getData().subscribe((data)=>{
-      console.log(data)
       this.citaMedica = data;
     })
   }

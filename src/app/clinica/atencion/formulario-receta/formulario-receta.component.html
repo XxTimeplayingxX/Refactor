@@ -9,7 +9,7 @@
             id="floatingInput"
             placeholder="name@example.com"
             [formControl]="form.controls.medicamento"
-            [ngClass]="{'is-invalid': ObtenerErrorCampoMedicamento()}"
+            [ngClass]="{'is-invalid': ObtenerErrorCampoMedicamento() && form.controls.medicamento.touched}"
           />
           <label for="floatingInput">Medicamento</label>
           <div id="validationServer03Feedback" class="invalid-feedback">
@@ -25,7 +25,7 @@
             id="floatingInput"
             placeholder="name@example.com"
             [formControl]="form.controls.dosis"
-            [ngClass]="{'is-invalid': ObtenerErrorCampoDosis()}"
+            [ngClass]="{'is-invalid': ObtenerErrorCampoDosis() && form.controls.dosis.touched}"
           />
           <label for="floatingInput">Dosis</label>
           <div id="validationServer03Feedback" class="invalid-feedback">
@@ -79,7 +79,7 @@
             id="floatingInput"
             placeholder="name@example.com"
             [formControl]="form.controls.duracion"
-            [ngClass]="{'is-invalid': ObtenerErrorCampoDuracion()}"
+            [ngClass]="{'is-invalid': ObtenerErrorCampoDuracion() && form.controls.duracion.touched}"
           />
           <label for="floatingInput">Duración en días</label>
           <div id="validationServer03Feedback" class="invalid-feedback">
@@ -97,7 +97,7 @@
             id="floatingInput"
             placeholder="name@example.com"
             [formControl]="form.controls.instrucciones"
-            [ngClass]="{'is-invalid': ObtenerErrorCampoInstrucciones()}"
+            [ngClass]="{'is-invalid': ObtenerErrorCampoInstrucciones() && form.controls.instrucciones.touched}"
           />
           <label for="floatingInput">Ingrese las instrucciones</label>
           <div id="validationServer03Feedback" class="invalid-feedback">

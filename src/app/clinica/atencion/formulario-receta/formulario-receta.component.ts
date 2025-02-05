@@ -83,9 +83,6 @@ export class FormularioRecetaComponent{
       pacienteId: this.paciente.pacienteID,
     };
 
-    console.log(detalleReceta);
-    console.log(new Date())
-
     if (this.idAEditar == undefined) {
       this.ListDetalleReceta.push(detalleReceta);
       this.toastSvc.success(
@@ -99,9 +96,6 @@ export class FormularioRecetaComponent{
       this.toastSvc.info('Se ha actualizado una receta', 'Receta Actualizada');
     }
     this.form.reset();
-
-    console.log(this.ListDetalleReceta);
-    console.log(new Date())
 
     this.form.reset();
   }
@@ -165,7 +159,6 @@ export class FormularioRecetaComponent{
 
 
   VerCambios() {
-    console.log('Estos datos han sido enviados ', this.ListDetalleReceta);
   }
 
   openModal() {
@@ -200,7 +193,6 @@ export class FormularioRecetaComponent{
   horasDespiertoDosVeces = ["06:00", "20:00"];
 
   EnviarCabios(detalleReceta: any) {
-    console.log('Esta es el detalle Receta que nos vino', detalleReceta)
     const receta: RecetaDTO = {
       fechaEmision: new Date(),
       comentarios: this.ListDetalleReceta[0].instrucciones,
@@ -235,15 +227,13 @@ export class FormularioRecetaComponent{
                       horaNotificacion =this.horasDespiertoDosVeces[n % this.horasDespiertoDosVeces.length];
                     }
                     else{
-                      horaNotificacion = detalleReceta[i].duracionHoras; 
-                      console.log(horaNotificacion);
+                      horaNotificacion = detalleReceta[i].horaElegida; 
                     }
                     let [horas, minutos] = horaNotificacion.split(":").map(Number);
                     let dstr: string = detalleReceta[i].fechaInicio;
                     let fechaDosis: Date = new Date(dstr + 'T00:00:00');
                     fechaDosis.setDate(fechaDosis.getDate() + dia);
                     fechaDosis.setHours(horas, minutos, 0, 0);
-                    console.log('Hora: ' + fechaDosis);
                     const nuevaNotificacion: NotificacionesDTO = {
                       detalleRecetaID: newDetalleReceta.detalleRecetaID,
                       fechaDosis: new Date(fechaDosis).toISOString(),
@@ -256,13 +246,8 @@ export class FormularioRecetaComponent{
                       .addData(nuevaNotificacion)
                       .subscribe({
                         next: (newNotification) => {
-                          console.log(
-                            'Nueva Notificación agregada: ',
-                            newNotification
-                          );
                         },
                         error: (error) => {
-                          console.log('Error', error);
                         },
                       });
                   }

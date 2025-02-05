@@ -1,5 +1,13 @@
-<app-menu></app-menu>
+<app-autorizado>
+  <ng-container autorizado>
+    <div>
+      <app-menu></app-menu>
+    </div>
+  </ng-container>
+  <ng-container noAutorizado>
+  </ng-container>
+</app-autorizado>
 
-<div class="contenedor">
+<div [ngClass]="{'container': estaAutorizado()}">
   <router-outlet />
 </div>
